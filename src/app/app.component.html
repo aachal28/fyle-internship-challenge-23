@@ -1,5 +1,10 @@
-<div class="grid h-screen place-items-center">
-  <div class="font-bold text-3xl">
-    Fyle Internship Challenge
-  </div>
-</div>
+<div class=".container"> 
+
+<app-header
+    [appTitle] ="appTitle"
+    [appTheme] ='appTheme'
+    (themeToggled) = 'toggleTheme()'></app-header>
+ 
+    <app-main-geist [appTitle]="appTitle" [appTheme]="appTheme"></app-main-geist>
+
+ </div>

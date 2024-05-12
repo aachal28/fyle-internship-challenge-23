@@ -1,27 +1,48 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { HeroComponent } from './hero/hero.component';
+import { UserProfileComponent } from './main/user-profile/user-profile.component';
+import { UserInputComponent } from './main/user-input/user-input.component';
+import { InvalidUserComponent } from './main/invalid-user/invalid-user.component';
+import { UserRepoListComponent } from './main/user-repo-list/user-repo-list.component';
+import { UtilPaginationComponent } from './main/util-pagination/util-pagination.component';
+import { UtilUserProfileLoaderComponent } from './main/util-profile-loader/util-profile-loader.component';
+import { UtilUserRepoLoaderComponent } from './main/util-repo-loader/util-repo-loader.component';
+import { FormsModule } from '@angular/forms';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [AppComponent]
-  }));
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [
+        AppComponent,
+        HeaderComponent,
+        HeroComponent,
+        UserProfileComponent,
+        UserRepoListComponent,
+        UserInputComponent,
+        InvalidUserComponent,
+        UtilPaginationComponent,
+        UtilUserProfileLoaderComponent,
+        UtilUserRepoLoaderComponent
+      ],
+      imports: [FormsModule, NgxSkeletonLoaderModule]
+    }).compileComponents();
   });
 
-  it(`should have as title 'fyle-frontend-challenge'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('fyle-frontend-challenge');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('fyle-frontend-challenge app is running!');
   });
+
+  it('should create the app component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  // Add more tests as needed
 });

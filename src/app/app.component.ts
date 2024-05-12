@@ -1,17 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
-  constructor(
-    private apiService: ApiService
-  ) {}
+export class AppComponent implements OnInit {
+  appTitle: string = 'GitExplorer';
+  appTheme: string = 'dark';
 
-  ngOnInit() {
-    this.apiService.getUser('johnpapa').subscribe(console.log);
+  // EventEmitter for notifying theme changes to parent components
+  @Output() themeChanged = new EventEmitter<string>();
+
+  ngOnInit(): void {
+    this.themeChanged.emit(this.appTheme);
+  }
+
+  toggleTheme(): void {
+    // Remove the current theme class from the body
+    document.body.classList.remove(this.appTheme);
+
+    // Toggle between 'dark' and 'light' themes
+    this.appTheme = this.appTheme === 'dark' ? 'light' : 'dark';
+
+    // Add the updated theme class to the body
+    document.body.classList.add(this.appTheme);
+
+    // Emit the updated theme to parent components
+    this.themeChanged.emit(this.appTheme);
   }
 }

@@ -1,0 +1,37 @@
+<header class="w-full flex items-center justify-between fixed top-0 py-3 px-6 border-b z-10"
+        [ngClass]="{
+          'bg-card-light border-edge-light text-txt-light': appTheme === 'light',
+          'bg-card-dark border-edge-dark text-txt-dark': appTheme === 'dark'
+        }">
+
+  <!-- Application Logo and Brand name -->
+<div class="flex items-center justify-between">
+  <div>
+    <i class="text-3xl px-2 fa-brands fa-github" [class]="appTheme === 'light' ? 'text-black' : 'text-white'"></i>
+  </div>
+  <div class="text-xl font-semibold">
+    <h3 [class]="appTheme === 'light' ? 'text-black' : 'text-white'">
+      {{ appTitle }}
+    </h3>
+  </div>
+</div>
+
+
+<!-- Theme Toggle Button -->
+<div
+    (click)="toggleTheme()"
+    class="flex justify-center items-center select-none px-3 py-1 rounded-lg border border-edge-dark cursor-pointer"
+    [class]="appTheme === 'light' ? 'border-edge-light' : 'border-edge-dark'"
+  >
+<span class="font-medium" [class]="appTheme === 'light' ? 'text-black' : 'text-white'">
+  Theme</span>
+<span class="py-0 text-center w-10 focus:outline-none">
+<span *ngIf="appTheme === 'light'">
+  <i class="fas fa-moon text-xl text-black"></i>
+</span>
+<span *ngIf="appTheme === 'dark'">
+  <i class="fas fa-sun text-xl text-white"></i>
+</span>
+</span>
+</div>
+</header>

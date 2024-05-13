@@ -75,13 +75,15 @@
       <div class="w-full lg:w-1/3 pr-8"
       >
         <!-- User profile -->
-        <h1
-          *ngIf="searchClicked"      
-           [class]="appTheme === 'light' ? 'text-txt-light' : 'text-txt-dark'"
-          class="font-bold text-2xl underline underline-offset-4"
-        >
-          User Profile:
-        </h1>
+<h1
+*ngIf="searchClicked"      
+[class.text-txt-light]="appTheme === 'light'"
+[class.text-txt-dark]="appTheme === 'dark'"
+class="font-bold text-2xl "
+>
+User Profile:
+</h1>
+
   
         <ng-container *ngIf="loadingUser; else loadingUserFinish">
           <app-util-user-profile-loader
@@ -114,7 +116,7 @@
         <!-- Repositories section -->
         <h1
           *ngIf="searchClicked"
-          class="font-bold text-2xl underline underline-offset-4 mb-4"
+          class="font-bold text-2xl "
         >
           User Repositories:
         </h1>
